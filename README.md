@@ -1,2 +1,4 @@
-# wordhuntsolver
-returns list of words based on popular GamePigeon game WordHunt
+# Word Game Solvers
+Given the game and its board, returns a list of all the valid words found in the board.  
+
+Works for the word games Anagrams and Word Hunt. 
