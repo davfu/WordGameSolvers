@@ -123,26 +123,8 @@ class WordBites(WordGameSolver):
                     for key in new_remaining:
                         for val in new_remaining[key]:
                             self.vert_words((key, val), new_remaining, cur_word)
-
-            # if node[0] == 'h':
-            #     cur_word1, cur_word2 = prev_word + node[1][0], prev_word + node[1][1]
-            #     if len(cur_word1) >= 3 and self.trie.valid_word(cur_word1): self.words_set.add(cur_word1)
-            #     if len(cur_word2) >= 3 and self.trie.valid_word(cur_word2): self.words_set.add(cur_word2)
-            #     if self.trie.valid_prefix(cur_word1): 
-            #         for key in new_remaining:
-            #             for val in new_remaining[key]:
-            #                 self.vert_words((key, val), new_remaining, cur_word1)
-            #     if self.trie.valid_prefix(cur_word2):
-            #         for key in new_remaining:
-            #             for val in new_remaining[key]:
-            #                 self.vert_words((key, val), new_remaining, cur_word2)
-            # else:
-            #     cur_word = prev_word + node[1]
-            #     if len(cur_word) >= 3 and self.trie.valid_word(cur_word): self.words_set.add(cur_word)
-            #     if self.trie.valid_prefix(cur_word):
-            #         for key in new_remaining:
-            #             for val in new_remaining[key]:
-            #                 self.vert_words((key, val), new_remaining, cur_word)
+    
+    # make method that sorts the words into most points with shortest number of moves (use some search algo from 348)
 
     def hor_words(self):
         hor_starters = [char for string in self.board['v'] for char in string] + self.board['h'] + self.board['s']
