@@ -34,7 +34,7 @@ class WordGameSolver:
         for key in sorted(self.words_map.keys()):
             print("\n" + str(key) + " letter words (" + str(len(self.words_map[key])) + "): \n" + "-------------------")
             for word in self.words_map[key]:
-                print(word, end='   ')
+                print(word, end='  ')
             print()
 
 class Anagrams(WordGameSolver):
@@ -108,6 +108,7 @@ class WordBites(WordGameSolver):
         for key in self.board:
             for val in self.board[key]:
                 self.vert_words((key, val), remaining, '')
+                #self.hor_words((key, val), remaining, '')
 
     def vert_words(self, node, remaining, prev_word): 
         if node[1] in remaining[node[0]]:
@@ -125,7 +126,19 @@ class WordBites(WordGameSolver):
                             self.vert_words((key, val), new_remaining, cur_word)
     
     # make method that sorts the words into most points with shortest number of moves (use some search algo from 348)
+    # or sort them by prefixes
 
-    def hor_words(self):
-        hor_starters = [char for string in self.board['v'] for char in string] + self.board['h'] + self.board['s']
-        print("horizontal starters" + str(hor_starters))
+    # def hor_words(self, node, remaining, prev_word):
+    #     if node[1] in remaining[node[0]]:
+    #         # remove node from remaining
+    #         new_remaining = {key: [value[i] for i in range(len(value)) if value[i] != node[1] or (value[i] == node[1] and i != value.index(node[1]))] if key == node[0] else value for key, value in remaining.items()}
+    #         if node[0] == 'v': iters = 2 # two possible words:
+    #         else: iters = 1
+    #         for i in range(iters):
+    #             if iters == 2: cur_word = prev_word + node[1][i]
+    #             else: cur_word = prev_word + node[1]
+    #             if len(cur_word) >= 3 and self.trie.valid_word(cur_word): self.words_set.add(cur_word)
+    #             if self.trie.valid_prefix(cur_word): 
+    #                 for key in new_remaining:
+    #                     for val in new_remaining[key]:
+    #                         self.vert_words((key, val), new_remaining, cur_word)
