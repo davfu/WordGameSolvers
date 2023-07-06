@@ -157,24 +157,25 @@ class WordBites(WordGameSolver):
         point_distro = {9: 2600, 8: 2200, 7: 1800, 6: 1400, 5: 800, 4: 400, 3: 100}
         return_dict = {}
 
-        for key, value in dictionary:
+        for key in dictionary:
             points = 0
-            for word in value:
+            for word in dictionary[key]:
                 points += point_distro[len(word)]
             return_dict[key] = points
-            
-        return return_dict
+        
+        sorted_return_dict = dict(sorted(return_dict.items(), key=lambda item: item[1]))
+        return sorted_return_dict
             
     def print_words(self):
         self.make_trie()
         self.find_words()
         hor, vert = self.classify_prefix(0), self.classify_prefix(1)
         merged = {**{"HORIZONTAL_" + key: value for key, value in hor.items()}, **{"VERTICAL_" + key: value for key, value in vert.items()}}
-        sorted_merged = sorted(merged.items(), key = lambda item: sum(len(s) for s in item[1]), reverse=False)
+        by_points = self.find_points(merged)
 
-        for key, value in sorted_merged:
+        for key in by_points:
             orientation, dict_key = key.split("_", 1)
-            print("\n" + f"{orientation} words with prefix: {dict_key}: \n" + "------------------------------------")
-            for word in sorted(value):
+            print("\n" + f"{orientation} words with prefix: {dict_key} ({by_points[key]} points): \n" + "-----------------------------------------------")
+            for word in sorted(merged[key]):
                 print(word, end="  ")
             print()
