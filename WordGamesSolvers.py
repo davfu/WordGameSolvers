@@ -100,6 +100,8 @@ class WordBites(WordGameSolver):
     def __init__(self, singles, vert, hor) -> None:
         super().__init__()
         self.board = {'s': singles, 'v': vert, 'h': hor}
+        self.vert_words_set = set()
+        self.hor_words_set = set()
     
     def find_words(self):
         remaining = {'s': copy.deepcopy(self.board['s']), 
@@ -108,7 +110,7 @@ class WordBites(WordGameSolver):
         for key in self.board:
             for val in self.board[key]:
                 self.vert_words((key, val), remaining, '')
-                #self.hor_words((key, val), remaining, '')
+                self.hor_words((key, val), remaining, '')
 
     def vert_words(self, node, remaining, prev_word): 
         if node[1] in remaining[node[0]]:
@@ -119,7 +121,7 @@ class WordBites(WordGameSolver):
             for i in range(iters):
                 if iters == 2: cur_word = prev_word + node[1][i]
                 else: cur_word = prev_word + node[1]
-                if len(cur_word) >= 3 and self.trie.valid_word(cur_word): self.words_set.add(cur_word)
+                if len(cur_word) >= 3 and self.trie.valid_word(cur_word): self.vert_words_set.add(cur_word)
                 if self.trie.valid_prefix(cur_word): 
                     for key in new_remaining:
                         for val in new_remaining[key]:
@@ -128,17 +130,51 @@ class WordBites(WordGameSolver):
     # make method that sorts the words into most points with shortest number of moves (use some search algo from 348)
     # or sort them by prefixes
 
-    # def hor_words(self, node, remaining, prev_word):
-    #     if node[1] in remaining[node[0]]:
-    #         # remove node from remaining
-    #         new_remaining = {key: [value[i] for i in range(len(value)) if value[i] != node[1] or (value[i] == node[1] and i != value.index(node[1]))] if key == node[0] else value for key, value in remaining.items()}
-    #         if node[0] == 'v': iters = 2 # two possible words:
-    #         else: iters = 1
-    #         for i in range(iters):
-    #             if iters == 2: cur_word = prev_word + node[1][i]
-    #             else: cur_word = prev_word + node[1]
-    #             if len(cur_word) >= 3 and self.trie.valid_word(cur_word): self.words_set.add(cur_word)
-    #             if self.trie.valid_prefix(cur_word): 
-    #                 for key in new_remaining:
-    #                     for val in new_remaining[key]:
-    #                         self.vert_words((key, val), new_remaining, cur_word)
+    def hor_words(self, node, remaining, prev_word):
+        if node[1] in remaining[node[0]]:
+            # remove node from remaining
+            new_remaining = {key: [value[i] for i in range(len(value)) if value[i] != node[1] or (value[i] == node[1] and i != value.index(node[1]))] if key == node[0] else value for key, value in remaining.items()}
+            if node[0] == 'v': iters = 2 # two possible words:
+            else: iters = 1
+            for i in range(iters):
+                if iters == 2: cur_word = prev_word + node[1][i]
+                else: cur_word = prev_word + node[1]
+                if len(cur_word) >= 3 and self.trie.valid_word(cur_word): self.hor_words_set.add(cur_word)
+                if self.trie.valid_prefix(cur_word): 
+                    for key in new_remaining:
+                        for val in new_remaining[key]:
+                            self.hor_words((key, val), new_remaining, cur_word)
+    
+    def classify_prefix(self, orientation): # 0 = horizontal, 1 = vertical
+        sets = [self.hor_words_set, self.vert_words_set]
+        prefix_map = {}
+        for word in sets[orientation]:
+            if word[:3] not in prefix_map: prefix_map[word[:3]] = [word]
+            else: prefix_map[word[:3]].append(word)
+        return prefix_map
+    
+    def find_points(self, dictionary):
+        point_distro = {9: 2600, 8: 2200, 7: 1800, 6: 1400, 5: 800, 4: 400, 3: 100}
+        return_dict = {}
+
+        for key, value in dictionary:
+            points = 0
+            for word in value:
+                points += point_distro[len(word)]
+            return_dict[key] = points
+            
+        return return_dict
+            
+    def print_words(self):
+        self.make_trie()
+        self.find_words()
+        hor, vert = self.classify_prefix(0), self.classify_prefix(1)
+        merged = {**{"HORIZONTAL_" + key: value for key, value in hor.items()}, **{"VERTICAL_" + key: value for key, value in vert.items()}}
+        sorted_merged = sorted(merged.items(), key = lambda item: sum(len(s) for s in item[1]), reverse=False)
+
+        for key, value in sorted_merged:
+            orientation, dict_key = key.split("_", 1)
+            print("\n" + f"{orientation} words with prefix: {dict_key}: \n" + "------------------------------------")
+            for word in sorted(value):
+                print(word, end="  ")
+            print()
