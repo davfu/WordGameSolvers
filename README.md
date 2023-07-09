@@ -23,9 +23,9 @@ For each game, the program constructs any and all combinations of the characters
 3. Select which game you are playing (1 for Anagrams, 2 for Word Hunt, 3 for Word Bites)
 4. Input the board:
    
-   ~ 6 character string for Anagrams
+   ~ 6 character string for Anagrams 
    
-   ~ 16 character string for Word Hunt
+   ~ 16 character string for Word Hunt (from left to right, top to bottom)
    
    ~ Each 1x1, 2x1, and 1x2 character tiles for Word Bites
 5. Input the solutions to the game !!! Easy dubs let's gOOO !!!
