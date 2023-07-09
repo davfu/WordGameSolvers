@@ -4,11 +4,7 @@ A series of solvers for the popular 2-player iMessage games Anagrams, Word Hunt,
 # Introduction
 Anagrams is a word game where each player is given 6 alphabetical characters and asked to create as many words as possible.  The longer the word, the more points the player recieves.  The player with the most points in under 60 seconds wins the game.
 
-<img width="250" alt="Screenshot 2023-07-08 at 5 07 40 PM" src="https://github.com/davfu/wordgamesolvers/assets/87512091/ca8f09f0-b9e3-4cd0-b2fc-1f92d58ea0c9">
-
 Word Hunt is a game where each player is given a 4x4 board of alphabetical characters and asked to draw their finger along the board to construct as many words as possible.  The longer the word, the more points the player recieves.  The player with the most points in under 80 seconds wins the game.
-
-<img width="250" alt="Screenshot 2023-07-08 at 5 10 15 PM" src="https://github.com/davfu/wordgamesolvers/assets/87512091/984e68ea-e35d-4c59-9ac9-3a7377132ccd">
 
 Word Bites is a game where each player is given a 9x9 board with an assortment of 2x1, 1x2, or 1x1 tiles of characters.  The players are asked to drag the tiles together to create as many words as possible.  The longer the word, the more points the player recieves.  The player with the most points in under 90 seconds wins the game.  
 
