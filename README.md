@@ -8,8 +8,6 @@ Word Hunt is a game where each player is given a 4x4 board of alphabetical chara
 
 Word Bites is a game where each player is given a 9x9 board with an assortment of 2x1, 1x2, or 1x1 tiles of characters.  The players are asked to drag the tiles together to create as many words as possible.  The longer the word, the more points the player recieves.  The player with the most points in under 90 seconds wins the game.  
 
-<img width="250" alt="Screenshot 2023-07-08 at 5 16 18 PM" src="https://github.com/davfu/wordgamesolvers/assets/87512091/f96a29a4-4905-4d23-a602-548fd786002c">
-
 # How It Works
 For each game, the program constructs any and all combinations of the characters using a recursive Depth First Search algorithm.  However, for efficiency purposes, the program checks if the current partial string is the prefix of any existing words stored in a Trie data structure (consisting of 80,272 words) before calling the recursive function to extend the current partial string.  Once the program has found a valid word (by checking if it exists in the Trie) the word is added to a set of valid words found.  
 
