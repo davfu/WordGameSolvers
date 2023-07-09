@@ -5,7 +5,7 @@ class WordGameSolver:
     def __init__(self) -> None:
         self.words_set = set()
         self.words_map = {}
-        self.filename = 'dictionary.txt'
+        self.filename = '/Users/davidfu/Desktop/wordgamesolvers/dictionary.txt'
         self.trie = Trie()
     
     def make_trie(self):
@@ -126,9 +126,6 @@ class WordBites(WordGameSolver):
                     for key in new_remaining:
                         for val in new_remaining[key]:
                             self.vert_words((key, val), new_remaining, cur_word)
-    
-    # make method that sorts the words into most points with shortest number of moves (use some search algo from 348)
-    # or sort them by prefixes
 
     def hor_words(self, node, remaining, prev_word):
         if node[1] in remaining[node[0]]:
