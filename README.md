@@ -21,7 +21,7 @@ Input the board and receive a list of valid words:
 
 <img width="500" alt="Screenshot 2023-07-08 at 10 26 07 PM" src="https://github.com/davfu/wordgamesolvers/assets/87512091/4046c22d-53f4-47b0-bbac-73ea0d618168">
 
-Create the words in Anagrams and easy wins let's goOOOO !!!
+Create the words in Anagrams and easy wins!
 
 <img width="250" alt="Screenshot 2023-07-08 at 5 16 18 PM" src=https://github.com/davfu/wordgamesolvers/assets/87512091/c25e4226-9894-496a-ac47-c6189b20918a>
 
@@ -34,7 +34,7 @@ Input the board and receive a list of valid words:
 
 <img width="500" alt="Screenshot 2023-07-08 at 10 24 07 PM" src="https://github.com/davfu/wordgamesolvers/assets/87512091/ef9fb62a-0de6-43d3-9064-63f089fbb9e5">
 
-Create the words in Word Hunt and easy easy dubs let's GOOOOOOO !!!!
+Create the words in Word Hunt and easy easy W's!!
 
 <img width="250" alt="ss wordhunt find" src=https://github.com/davfu/wordgamesolvers/assets/87512091/b3343e58-3fbb-4307-baa4-1abf5fc034ab>
 
@@ -51,6 +51,6 @@ Ouput:
 
 <img width="500" alt="wordbites input" src=https://github.com/davfu/wordgamesolvers/assets/87512091/7bdcba64-bd1b-4426-86f1-b2ca12489528>
 
-WE TAKE THESE DUBS LGGG !!!!!
+WE TAKE THESE WINS!!!!!
 
 <img width="250" alt="wordbites win" src=https://github.com/davfu/wordgamesolvers/assets/87512091/62892cb9-a7cf-4735-8903-9013d35e2883>
